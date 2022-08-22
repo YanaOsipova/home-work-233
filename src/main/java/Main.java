@@ -17,12 +17,12 @@ public class Main {
         String chromeDriverPath = "lib/chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
+        options.addArguments("--headless");
         options.addArguments("window-size=1400,800");
-        options.addArguments("disable-gpu");
+        options.addArguments("--disable-gpu");
         //options.addArguments("--headless", "--disable-gpu", "--window-size=1400,800","--ignore-certificate-errors");
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver(options);
         driver.get("https://duckduckgo.com");
         var element = driver.findElement(By.id("search_form_input_homepage"));
         element.sendKeys("ОТУС");
